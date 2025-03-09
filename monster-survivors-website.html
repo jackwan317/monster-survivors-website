@@ -1,0 +1,192 @@
+<!DOCTYPE html> <!-- 声明文档类型为HTML5 -->
+<html lang="en"> <!-- HTML根元素，lang="en"表示页面主要语言为英语 -->
+<head> <!-- 头部区域，包含页面元数据和资源引用 -->
+    <!-- 基本的元数据设置 -->
+    <meta charset="UTF-8"> <!-- 设置页面字符编码为UTF-8，支持多语言字符 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 响应式设计必需，确保页面在移动设备上正确显示，initial-scale=1.0设置初始缩放比例 -->
+    <title>Monster Survivors - Fight Endless Waves of Monsters</title> <!-- 页面标题，显示在浏览器标签页上，对SEO很重要 -->
+    
+    <!-- SEO优化：网站描述 - 搜索引擎会显示这段描述，影响点击率 -->
+    <meta name="description" content="Survive endless waves of monsters in this action-packed roguelike game. Upgrade your character, collect powerful items, and face increasingly difficult challenges.">
+    
+    <!-- 规范链接：告诉搜索引擎这是网站的主要版本，避免重复内容问题 -->
+    <link rel="canonical" href="https://monstersurvivors.com">
+    
+    <!-- 引入Tailwind CSS框架 - 一个实用程序优先的CSS框架，通过类名快速构建界面 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind CSS自定义配置 - 扩展默认主题 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 自定义Apple风格的颜色主题 - 可在全站通过类名使用这些颜色
+                        // 例如：bg-apple-blue 表示蓝色背景，text-apple-red 表示红色文字
+                        apple: {
+                            blue: '#007AFF',    // 苹果蓝 - 用于主要按钮和链接
+                            red: '#FF3B30',     // 苹果红 - 用于警告和错误
+                            green: '#34C759',   // 苹果绿 - 用于成功状态
+                            purple: '#AF52DE',  // 苹果紫 - 用于特殊强调
+                            yellow: '#FFCC00',  // 苹果黄 - 用于警告和高亮
+                            orange: '#FF9500',  // 苹果橙 - 用于次要强调
+                            dark: '#1C1C1E',    // 深色 - 用于文字和背景
+                            gray: '#8E8E93',    // 灰色 - 用于次要文字
+                            lightgray: '#F2F2F7' // 浅灰色 - 用于背景
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- 移动端响应式样式 - 使用媒体查询针对小屏幕设备优化显示 -->
+    <style type="text/css">
+        @media (max-width: 640px) { /* 当屏幕宽度小于640px时应用以下样式 */
+            .game-container {
+                height: 70vh;  /* 在移动设备上游戏容器高度为视窗高度的70%，确保游戏区域不会过大 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-apple-lightgray text-apple-dark"> <!-- body设置全局背景色和文字颜色 -->
+    <!-- 页面头部 - 包含导航栏和网站标题 -->
+    <header class="bg-apple-blue text-white p-4 md:p-6 shadow-md"> <!-- header使用蓝色背景，白色文字，添加内边距和阴影 -->
+        <div class="container mx-auto"> <!-- container类用于限制内容宽度，mx-auto使其水平居中 -->
+            <div class="flex flex-col md:flex-row justify-between items-center"> <!-- 弹性布局：移动端垂直排列，桌面端水平排列 -->
+                <!-- 网站标题和描述 -->
+                <div class="text-center md:text-left mb-4 md:mb-0"> <!-- 移动端居中，桌面端左对齐 -->
+                    <h1 class="text-3xl md:text-4xl font-bold">Monster Survivors</h1> <!-- 响应式字体大小 -->
+                    <p class="text-lg mt-2">Survive and fight against endless waves of monsters!</p>
+                </div>
+                <!-- 导航菜单 - 使用无序列表创建导航链接 -->
+                <nav>
+                    <ul class="flex space-x-4"> <!-- flex布局，项目间距为4个单位 -->
+                        <!-- hover:text-apple-yellow 实现鼠标悬停时文字变黄色的效果 -->
+                        <!-- transition-colors 添加颜色变化过渡动画 -->
+                        <li><a href="#game" class="hover:text-apple-yellow transition-colors">Play Now</a></li>
+                        <li><a href="#about" class="hover:text-apple-yellow transition-colors">About</a></li>
+                        <li><a href="#features" class="hover:text-apple-yellow transition-colors">Features</a></li>
+                        <li><a href="#controls" class="hover:text-apple-yellow transition-colors">Controls</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 - 使用main标签语义化主要内容 -->
+    <main class="container mx-auto p-4 md:p-6">
+        <!-- 游戏区域 section - 包含游戏iframe -->
+        <section id="game" class="my-8"> <!-- my-8添加上下外边距 -->
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">Play Monster Survivors</h2>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden"> <!-- 白色背景，圆角，阴影，溢出隐藏 -->
+                <!-- 游戏容器：使用iframe嵌入外部游戏页面 -->
+                <div class="game-container w-full h-screen max-h-[600px]"> <!-- 限制最大高度为600px -->
+                    <iframe src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
+                            class="w-full h-full border-0" <!-- 宽高100%，无边框 -->
+                            allowfullscreen></iframe> <!-- 允许全屏显示 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于游戏部分 - 使用section标签组织相关内容 -->
+        <section id="about" class="my-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">About Monster Survivors</h2>
+            <div class="bg-white rounded-lg shadow-lg p-6"> <!-- p-6添加内边距 -->
+                <p class="mb-4">Monster Survivors is an action-packed roguelike survival game where you must fight against endless waves of monsters. Each run is unique, with random enemy spawns, power-ups, and challenges to overcome.</p>
+                <p>Inspired by games like Vampire Survivors, this game combines fast-paced action with strategic character building. How long can you survive as the difficulty continuously increases?</p>
+            </div>
+        </section>
+
+        <!-- 游戏特性展示：使用网格布局 - grid系统实现响应式卡片布局 -->
+        <section id="features" class="my-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-apple-blue">Game Features</h2>
+            <!-- grid-cols-1 移动端单列，md:grid-cols-2 平板双列，lg:grid-cols-3 桌面三列 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> <!-- gap-6设置网格间距 -->
+                <!-- 每个特性卡片 - 使用相同的样式但不同的颜色强调不同特性 -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-apple-orange mb-3">Multiple Characters</h3>
+                    <p>Choose from various characters, each with unique starting weapons and abilities.</p>
+                </div>
+                <!-- ... 其他特性卡片使用相同的结构 ... -->
+            </div>
+        </section>
+
+        <!-- 游戏控制说明 - 使用网格布局分为键盘和移动端控制说明 -->
+        <section id="controls" class="my-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-apple-blue">Game Controls</h2>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- 键盘控制说明 - 使用无序列表展示控制键 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-purple mb-3">Keyboard Controls</h3>
+                        <ul class="list-disc pl-5 space-y-2"> <!-- list-disc添加项目符号，space-y-2设置项目间距 -->
+                            <li><span class="font-semibold">WASD or Arrow Keys:</span> Move your character</li>
+                            <li><span class="font-semibold">Space:</span> Pause the game</li>
+                            <li><span class="font-semibold">E or Enter:</span> Select/Confirm</li>
+                            <li><span class="font-semibold">Esc:</span> Back/Menu</li>
+                        </ul>
+                    </div>
+                    <!-- 移动端控制说明 -->
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-orange mb-3">Mobile Controls</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><span class="font-semibold">Virtual Joystick:</span> Appears on the left side of the screen for movement</li>
+                            <li><span class="font-semibold">Tap Buttons:</span> Menu and action buttons on the right side</li>
+                            <li><span class="font-semibold">Swipe:</span> Navigate menus and selection screens</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页面底部 - 包含版权信息和链接 -->
+    <footer class="bg-apple-dark text-white p-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Monster Survivors. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-apple-blue transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-apple-blue transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JSON-LD结构化数据：用于SEO优化 
+         这段代码帮助搜索引擎更好地理解网页内容：
+         1. @context 和 @type 告诉搜索引擎这是一个视频游戏
+         2. name, description 提供游戏的基本信息
+         3. genre 表明游戏类型
+         4. playMode 说明是单人游戏
+         5. offers 部分告诉搜索引擎这是一个免费游戏
+         
+         使用结构化数据的好处：
+         1. 搜索结果可能显示更丰富的信息（富摘要）
+         2. 提高在相关搜索中的排名
+         3. 更容易被Google等搜索引擎的知识图谱收录
+    -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Monster Survivors",
+        "description": "Survive endless waves of monsters in this action-packed roguelike game. Upgrade your character, collect powerful items, and face increasingly difficult challenges.",
+        "genre": ["Action", "Roguelike", "Survival"],
+        "playMode": "SinglePlayer",
+        "applicationCategory": "Game",
+        "url": "https://monstersurvivors.com",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+</body>
+</html>
